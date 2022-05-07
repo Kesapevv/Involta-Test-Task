@@ -29,7 +29,7 @@ class MessageVC: UIViewController {
     
     private var indicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.tintColor = .red
+        indicator.color = .gray
         return indicator
     }()
 
@@ -42,7 +42,6 @@ class MessageVC: UIViewController {
                 self.checkСonnection()
             } else {
                 self.indicatorView.stopAnimating()
-                print("good everything!")
                 self.tableView.reloadData()
             }
          }
@@ -50,7 +49,6 @@ class MessageVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.setupLayout()
-        self.indicatorView.startAnimating()
     }
     
     //MARK: - Methods
@@ -78,6 +76,7 @@ class MessageVC: UIViewController {
     
     private func setupView() {
         self.view.backgroundColor = .white
+        self.indicatorView.startAnimating()
     }
     
     private func checkСonnection() {
@@ -85,11 +84,12 @@ class MessageVC: UIViewController {
             let alert = UIAlertController(title: "Error", message: "Check your internet connection!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Try again", style: .cancel, handler: { alert in
                 self.indicatorView.startAnimating()
-                self.checkСonnection()
-                self.tableView.reloadData()
                 Networking.FetchData(offset: self.offset) { success in
                     if success == true {
+                        self.tableView.reloadData()
                         self.indicatorView.stopAnimating()
+                    } else {
+                        self.checkСonnection()
                     }
                  }
             }))
@@ -124,14 +124,9 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.offset += 20
         Networking.FetchData(offset: offset) { success in
-            if success == false {
-                self.checkСonnection()
-            } else {
-                self.indicatorView.stopAnimating()
-                print("good everything!")
-                self.tableView.reloadData()
-            }
+            print(success)
          }
          self.tableView.reloadData()
     }
+    
 }
