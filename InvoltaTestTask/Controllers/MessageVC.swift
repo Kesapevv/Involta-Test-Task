@@ -11,11 +11,11 @@ import SnapKit
 class MessageVC: UIViewController {
     
     //MARK: - Properties
-
+    
     private var offset = 20
-
+    
     //MARK: - Views
-
+    
     private(set) lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
@@ -32,19 +32,20 @@ class MessageVC: UIViewController {
         indicator.color = .gray
         return indicator
     }()
-
+    
     //MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Networking.FetchData(offset: 0) { success in
-            if success == false {
+            switch success {
+            case false:
                 self.checkСonnection()
-            } else {
+            case true:
                 self.indicatorView.stopAnimating()
                 self.tableView.reloadData()
             }
-         }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +92,7 @@ class MessageVC: UIViewController {
                     } else {
                         self.checkСonnection()
                     }
-                 }
+                }
             }))
             self.present(alert, animated: true)
         }
@@ -99,16 +100,14 @@ class MessageVC: UIViewController {
     
 }
 
-
-
 extension MessageVC: UITableViewDelegate, UITableViewDataSource {
-
+    
     //MARK: - Data Source
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Messages.shared.messages.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.identifier, for: indexPath) as! MessageTableViewCell
         cell.configureTableViewCell(label: Messages.shared.messages[indexPath.row])
@@ -123,14 +122,11 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         Networking.FetchData(offset: offset) { success in
-            if success == false {
-                self.indicatorView.startAnimating()
-            } else {
+            if success == true {
                 self.offset += 20
-                self.indicatorView.stopAnimating()
             }
-         }
-         self.tableView.reloadData()
+        }
+        self.tableView.reloadData()
     }
     
 }
