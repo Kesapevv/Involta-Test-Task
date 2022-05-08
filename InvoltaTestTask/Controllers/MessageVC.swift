@@ -12,7 +12,7 @@ class MessageVC: UIViewController {
     
     //MARK: - Properties
 
-    private var offset = 0
+    private var offset = 20
 
     //MARK: - Views
 
@@ -37,7 +37,7 @@ class MessageVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Networking.FetchData(offset: offset) { success in
+        Networking.FetchData(offset: 0) { success in
             if success == false {
                 self.checkСonnection()
             } else {
@@ -84,7 +84,7 @@ class MessageVC: UIViewController {
             let alert = UIAlertController(title: "Error", message: "Check your internet connection!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Try again", style: .cancel, handler: { alert in
                 self.indicatorView.startAnimating()
-                Networking.FetchData(offset: self.offset) { success in
+                Networking.FetchData(offset: 0) { success in
                     if success == true {
                         self.tableView.reloadData()
                         self.indicatorView.stopAnimating()
@@ -122,11 +122,18 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
     //MARK: - TableView Delegate
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.offset += 20
         Networking.FetchData(offset: offset) { success in
-            print(success)
+            if success == false {
+                self.indicatorView.startAnimating()
+            } else {
+                self.offset += 20
+                self.indicatorView.stopAnimating()
+            }
          }
          self.tableView.reloadData()
     }
     
 }
+
+
+
