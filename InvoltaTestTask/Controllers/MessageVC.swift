@@ -37,6 +37,10 @@ class MessageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         Networking.FetchData(offset: 0) { success in
             switch success {
             case false:
@@ -46,10 +50,6 @@ class MessageVC: UIViewController {
                 self.tableView.reloadData()
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.setupLayout()
     }
     
     //MARK: - Methods
