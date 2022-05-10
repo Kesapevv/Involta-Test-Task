@@ -83,14 +83,14 @@ class MessageVC: UIViewController {
     private func checkСonnection() {
         if Messages.shared.messages.isEmpty {
             let alert = UIAlertController(title: "Error", message: "Check your internet connection!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Try again", style: .cancel, handler: { alert in
-                self.indicatorView.startAnimating()
+            alert.addAction(UIAlertAction(title: "Try again", style: .cancel, handler: { [weak self] alert in
+                self?.indicatorView.startAnimating()
                 Networking.FetchData(offset: 0) { success in
                     if success == true {
-                        self.tableView.reloadData()
-                        self.indicatorView.stopAnimating()
+                        self?.tableView.reloadData()
+                        self?.indicatorView.stopAnimating()
                     } else {
-                        self.checkСonnection()
+                        self?.checkСonnection()
                     }
                 }
             }))

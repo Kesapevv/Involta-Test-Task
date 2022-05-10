@@ -13,10 +13,10 @@
 		2D182E3028257F7F009D5FFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D182E2F28257F7F009D5FFB /* Assets.xcassets */; };
 		2D182E3328257F7F009D5FFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D182E3128257F7F009D5FFB /* LaunchScreen.storyboard */; };
 		2D182E3E28258027009D5FFB /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D182E3D28258027009D5FFB /* MessageTableViewCell.swift */; };
-		2D182E4128258042009D5FFB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2D182E4028258042009D5FFB /* SnapKit */; };
 		2D182E4528258435009D5FFB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D182E4428258435009D5FFB /* Model.swift */; };
 		2D182E47282584C9009D5FFB /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D182E46282584C9009D5FFB /* Networking.swift */; };
-		2D182E4A2825852B009D5FFB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2D182E492825852B009D5FFB /* Alamofire */; };
+		2D182E95282795E8009D5FFB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2D182E94282795E8009D5FFB /* SnapKit */; };
+		2D182E98282795F3009D5FFB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2D182E97282795F3009D5FFB /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D182E4128258042009D5FFB /* SnapKit in Frameworks */,
-				2D182E4A2825852B009D5FFB /* Alamofire in Frameworks */,
+				2D182E95282795E8009D5FFB /* SnapKit in Frameworks */,
+				2D182E98282795F3009D5FFB /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +134,8 @@
 			);
 			name = InvoltaTestTask;
 			packageProductDependencies = (
-				2D182E4028258042009D5FFB /* SnapKit */,
-				2D182E492825852B009D5FFB /* Alamofire */,
+				2D182E94282795E8009D5FFB /* SnapKit */,
+				2D182E97282795F3009D5FFB /* Alamofire */,
 			);
 			productName = InvoltaTestTask;
 			productReference = 2D182E2328257F7E009D5FFB /* InvoltaTestTask.app */;
@@ -166,8 +166,8 @@
 			);
 			mainGroup = 2D182E1A28257F7E009D5FFB;
 			packageReferences = (
-				2D182E3F28258042009D5FFB /* XCRemoteSwiftPackageReference "SnapKit" */,
-				2D182E482825852B009D5FFB /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2D182E93282795E8009D5FFB /* XCRemoteSwiftPackageReference "SnapKit" */,
+				2D182E96282795F3009D5FFB /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 2D182E2428257F7E009D5FFB /* Products */;
 			projectDirPath = "";
@@ -410,7 +410,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2D182E3F28258042009D5FFB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		2D182E93282795E8009D5FFB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -418,7 +418,7 @@
 				kind = branch;
 			};
 		};
-		2D182E482825852B009D5FFB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		2D182E96282795F3009D5FFB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -429,14 +429,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2D182E4028258042009D5FFB /* SnapKit */ = {
+		2D182E94282795E8009D5FFB /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2D182E3F28258042009D5FFB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 2D182E93282795E8009D5FFB /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		2D182E492825852B009D5FFB /* Alamofire */ = {
+		2D182E97282795F3009D5FFB /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2D182E482825852B009D5FFB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 2D182E96282795F3009D5FFB /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
