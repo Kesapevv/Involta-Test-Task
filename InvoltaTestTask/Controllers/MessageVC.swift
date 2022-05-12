@@ -37,10 +37,6 @@ class MessageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupLayout()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         Networking.FetchData(offset: 0) { success in
             switch success {
             case false:
@@ -50,6 +46,10 @@ class MessageVC: UIViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.setupLayout()
     }
     
     //MARK: - Methods
@@ -109,13 +109,14 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.identifier, for: indexPath) as! MessageTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.identifier, for: indexPath) as? MessageTableViewCell else  { return UITableViewCell() }
         cell.configureTableViewCell(label: Messages.shared.messages[indexPath.row])
         cell.backgroundColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
         cell.transform = tableView.transform
-        return cell
+        
+         return cell
     }
     
     //MARK: - TableView Delegate
