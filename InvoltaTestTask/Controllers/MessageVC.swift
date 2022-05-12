@@ -115,8 +115,7 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1
         cell.transform = tableView.transform
-        
-         return cell
+        return cell
     }
     
     //MARK: - TableView Delegate
