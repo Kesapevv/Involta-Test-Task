@@ -28,7 +28,7 @@ class MessageVC: UIViewController {
     
     private var indicatorView: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView()
-        indicator.color = .gray
+        indicator.color = .red
         return indicator
     }()
     
@@ -50,6 +50,7 @@ class MessageVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupLayout()
+        self.view.backgroundColor = UIColor(named: "CellColor")
     }
     
     //MARK: - Methods
@@ -124,12 +125,11 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
         Networking.FetchData(offset: offset) { success in
             if success == true {
                 self.offset += 20
+                print(self.offset)
             }
         }
         self.tableView.reloadData()
     }
     
 }
-
-//end
 

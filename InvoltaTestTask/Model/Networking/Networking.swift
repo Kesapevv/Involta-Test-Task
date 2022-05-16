@@ -26,7 +26,11 @@ class Networking {
                 for i in value.messages {
                     Messages.shared.messages.append(i)
                 }
+                if value.messages.isEmpty {
+                    completionHandler(false)
+                } else {
                 completionHandler(true)
+                }
             }
         }
    
