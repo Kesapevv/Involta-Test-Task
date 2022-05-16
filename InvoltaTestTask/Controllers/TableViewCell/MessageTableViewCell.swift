@@ -16,7 +16,7 @@ class MessageTableViewCell: UITableViewCell {
     //MARK: - Views
     private var messageLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "LabelColor")
         label.numberOfLines = 5
         label.textAlignment = .center
         return label

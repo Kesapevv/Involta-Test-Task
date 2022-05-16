@@ -22,7 +22,6 @@ class MessageVC: UIViewController {
         tableView.register(MessageTableViewCell.self, forCellReuseIdentifier: MessageTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.separatorStyle = .none
         tableView.transform = CGAffineTransform(scaleX: 1, y: -1)
         return tableView
     }()
@@ -49,6 +48,7 @@ class MessageVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.setupLayout()
     }
     
@@ -111,8 +111,8 @@ extension MessageVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MessageTableViewCell.identifier, for: indexPath) as? MessageTableViewCell else  { return UITableViewCell() }
         cell.configureTableViewCell(label: Messages.shared.messages[indexPath.row])
-        cell.backgroundColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1)
-        cell.layer.borderColor = UIColor.black.cgColor
+        cell.backgroundColor = UIColor(named: "CellColor")
+        cell.layer.borderColor = UIColor(named: "SeparatorColor")?.cgColor
         cell.layer.borderWidth = 1
         cell.transform = tableView.transform
         return cell
