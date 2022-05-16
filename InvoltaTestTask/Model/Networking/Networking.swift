@@ -29,10 +29,10 @@ class Networking {
                 if value.messages.isEmpty {
                     completionHandler(false)
                 } else {
-                completionHandler(true)
+                    completionHandler(true)
                 }
             }
         }
-   
+        
     }
 }
